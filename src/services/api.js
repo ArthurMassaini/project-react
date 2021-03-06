@@ -5,6 +5,6 @@ export const getGames = () => {
   return new Promise((resolve) => {
     setTimeout(() => {
       resolve(games);
-    }, 1000);
+    }, 100);
   });
 };

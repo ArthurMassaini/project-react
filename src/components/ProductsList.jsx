@@ -1,13 +1,12 @@
 import React from 'react';
-import { useSelector, useDispatch } from 'react-redux';
-import * as ACTIONS from '../redux/actions/index';
+import { useSelector } from 'react-redux';
+import * as STORAGE from '../services/storage';
 
 function ProductsList() {
   const { loading, games } = useSelector((state) => state.products);
-  const dispatch = useDispatch();
 
   const handleClick = (game) => {
-    dispatch(ACTIONS.putOnCart(game));
+    STORAGE.addToCart({...game, quantidade: 1});
   };
 
   if (loading) return <div>Loading...</div>;
