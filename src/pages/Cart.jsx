@@ -33,10 +33,14 @@ function Cart() {
   return (
     <main>
       <Header type="cart" />
-  
-      {getTotal > 0 ? <h1>Total: R$ {getTotal}</h1> : <h1>Seu carrinho está vazio!</h1>}
+
+      {getTotal > 0 ? (
+        <h1>Subtotal: R$ {getTotal}</h1>
+      ) : (
+        <h1>Seu carrinho está vazio!</h1>
+      )}
       {getTotal > 0 && <Link to="/cart/checkout">Finalizar Pedido</Link>}
-  
+
       <section className="game-list-cart">
         {getState.map((game) => (
           <div key={game.id} className="game-card-cart">
