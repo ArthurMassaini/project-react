@@ -12,3 +12,8 @@ export const fetchGames = () => async (dispatch) => {
   dispatch(retrieveGames(response));
   dispatch({ type: TYPES.OK });
 };
+
+export const putOnCart = (game) => ({
+  type: TYPES.ADD,
+  game,
+});
