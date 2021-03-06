@@ -1,30 +1,51 @@
 import React from 'react';
-import { useSelector, useDispatch } from 'react-redux';
-import * as ACTIONS from '../redux/actions/index';
+import { useState, useEffect } from 'react';
+import Header from '../components/Header';
+import * as STORAGE from '../services/storage';
 
 function Cart() {
-  const { games } = useSelector((state) => state.cart);
-  const dispatch = useDispatch();
+  const [getState, setState] = useState([]);
+  const [getTotal, setTotal] = useState(0);
+
+  const totalPrice = () => {
+    const games = JSON.parse(localStorage.getItem('cart')) || [];
+    let total = 0;
+    games.forEach((game) => {
+      total += game.price * game.quantidade;
+    });
+    setTotal(total);
+  };
+
+  useEffect(() => {
+    const games = JSON.parse(localStorage.getItem('cart')) || [];
+    totalPrice();
+    setState(games);
+  }, []);
 
   const handleClick = (game) => {
-    dispatch(ACTIONS.removeFromCart(game));
+    STORAGE.removeFromCart(game);
+    const games = JSON.parse(localStorage.getItem('cart')) || [];
+    setState(games);
+    totalPrice();
   };
 
   return (
-    <main className="game-list">
-      {games.map((game) => (
-        <div key={game.id} className="game-card">
-          <h1>{game.name}</h1>
-          <img src={game.image} alt="game" />
-          <div>
-            <span>Nota: {game.score} </span>
-            <span>Preço: R$ {game.price} </span>
+    <main>
+      <Header type="cart" />
+      <h1>Total: R$ {getTotal}</h1>
+      <section className="game-list-cart">
+        {getState.map((game) => (
+          <div key={game.id} className="game-card-cart">
+            <h1>{game.name}</h1>
+            <img src={game.image} alt="game" />
+            <br />
+            <p>Quantidade: {game.quantidade}</p>
+            <button type="button" onClick={() => handleClick(game)}>
+              Remover do carrinho
+            </button>
           </div>
-          <button type="button" onClick={() => handleClick(game)}>
-            Remover do carrinho
-          </button>
-        </div>
-      ))}
+        ))}
+      </section>
     </main>
   );
 }

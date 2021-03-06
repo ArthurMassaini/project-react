@@ -17,7 +17,7 @@ function Home() {
 
   return (
     <main>
-      <Header />
+      <Header type="home"/>
       <ProductsList />
     </main>
   );
