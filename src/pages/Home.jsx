@@ -2,6 +2,7 @@ import React from 'react';
 import { useEffect } from 'react';
 import { useDispatch } from 'react-redux';
 import ProductsList from '../components/ProductsList';
+import Header from '../components/Header';
 import * as ACTIONS from '../redux/actions/index';
 
 function Home() {
@@ -16,6 +17,7 @@ function Home() {
 
   return (
     <main>
+      <Header />
       <ProductsList />
     </main>
   );

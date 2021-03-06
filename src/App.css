@@ -14,3 +14,10 @@
   margin: 5px;
   padding-bottom: 10px;
 }
+
+.header {
+  display: flex;
+  justify-content: space-between;
+  margin-right: 10%;
+  margin-left: 10%;
+}
