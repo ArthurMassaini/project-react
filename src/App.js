@@ -1,9 +1,19 @@
+import React from 'react';
+import { Switch, Route } from 'react-router-dom';
+import Home from './pages/Home';
+import Cart from './pages/Home';
+import Checkout from './pages/Checkout';
+import NotFound from './pages/NotFound';
 import './App.css';
 
 function App() {
   return (
-    <div className="App">
-    </div>
+    <Switch>
+      <Route exact path="/" component={Home} />
+      <Route exact path="/cart" component={Cart} />
+      <Route exact path="/cart/checkout" component={Checkout} />
+      <Route component={NotFound} />
+    </Switch>
   );
 }
 
