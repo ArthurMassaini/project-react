@@ -38,3 +38,23 @@
   margin: 5px;
   padding-bottom: 10px;
 }
+
+.form {
+  margin-right: 10%;
+  margin-left: 10%;
+  text-align: end;
+}
+
+.checkout {
+  margin-right: 10%;
+  margin-left: 10%;
+}
+
+.margin {
+  margin-right: 10%;
+  margin-left: 10%;
+}
+
+.center {
+  text-align: center;
+}

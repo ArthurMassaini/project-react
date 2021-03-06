@@ -34,13 +34,6 @@ function Cart() {
     <main>
       <Header type="cart" />
 
-      {getTotal > 0 ? (
-        <h1>Subtotal: R$ {getTotal}</h1>
-      ) : (
-        <h1>Seu carrinho está vazio!</h1>
-      )}
-      {getTotal > 0 && <Link to="/cart/checkout">Finalizar Pedido</Link>}
-
       <section className="game-list-cart">
         {getState.map((game) => (
           <div key={game.id} className="game-card-cart">
@@ -55,6 +48,13 @@ function Cart() {
           </div>
         ))}
       </section>
+
+      {getTotal > 0 ? (
+        <h1 className="margin">Subtotal: R$ {getTotal}</h1>
+      ) : (
+        <h1 className="center">Seu carrinho está vazio!</h1>
+      )}
+      {getTotal > 0 && <Link to="/cart/checkout" className="margin">Finalizar Pedido</Link>}
     </main>
   );
 }

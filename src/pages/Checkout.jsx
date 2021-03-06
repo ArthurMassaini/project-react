@@ -34,7 +34,7 @@ function Checkout() {
   return (
     <main>
       <Header type="checkout" />
-      <section>
+      <section className="checkout">
         <h1>Subtotal: R$ {getSubTotal}</h1>
         {getSubTotal > 250.0 ? (
           <div>
