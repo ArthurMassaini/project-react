@@ -1,8 +1,14 @@
 import React from 'react';
-import { useSelector } from 'react-redux';
+import { useSelector, useDispatch } from 'react-redux';
+import * as ACTIONS from '../redux/actions/index';
 
 function ProductsList() {
   const { loading, games } = useSelector((state) => state.products);
+  const dispatch = useDispatch();
+
+  const handleClick = (game) => {
+    dispatch(ACTIONS.putOnCart(game));
+  };
 
   if (loading) return <div>Loading...</div>;
 
@@ -16,7 +22,9 @@ function ProductsList() {
             <span>Nota: {game.score} </span>
             <span>Preço: R$ {game.price} </span>
           </div>
-          <button type="button">Adicionar ao carrinho</button>
+          <button type="button" onClick={() => handleClick(game)}>
+            Adicionar ao carrinho
+          </button>
         </div>
       ))}
     </section>
