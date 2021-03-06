@@ -15,7 +15,11 @@ function Header({ type }) {
   } else {
     return (
       <header className="header">
-        <h1>Bem Vindo ao carrinho!</h1>
+        {type === 'cart' ? (
+          <h1>Bem Vindo ao carrinho!</h1>
+        ) : (
+          <h1>Bem Vindo ao checkout!</h1>
+        )}
         <Link to="/">
           <img
             src="https://findicons.com/files/icons/1580/devine_icons_part_2/256/home.png"

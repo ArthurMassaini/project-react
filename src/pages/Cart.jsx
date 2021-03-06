@@ -1,5 +1,6 @@
 import React from 'react';
 import { useState, useEffect } from 'react';
+import { Link } from 'react-router-dom';
 import Header from '../components/Header';
 import * as STORAGE from '../services/storage';
 
@@ -13,7 +14,7 @@ function Cart() {
     games.forEach((game) => {
       total += game.price * game.quantidade;
     });
-    setTotal(total);
+    setTotal(total.toFixed(2));
   };
 
   useEffect(() => {
@@ -32,7 +33,10 @@ function Cart() {
   return (
     <main>
       <Header type="cart" />
-      <h1>Total: R$ {getTotal}</h1>
+  
+      {getTotal > 0 ? <h1>Total: R$ {getTotal}</h1> : <h1>Seu carrinho está vazio!</h1>}
+      {getTotal > 0 && <Link to="/cart/checkout">Finalizar Pedido</Link>}
+  
       <section className="game-list-cart">
         {getState.map((game) => (
           <div key={game.id} className="game-card-cart">
@@ -40,6 +44,7 @@ function Cart() {
             <img src={game.image} alt="game" />
             <br />
             <p>Quantidade: {game.quantidade}</p>
+            <p>Preço: R$ {game.price}</p>
             <button type="button" onClick={() => handleClick(game)}>
               Remover do carrinho
             </button>
