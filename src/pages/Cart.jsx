@@ -23,8 +23,15 @@ function Cart() {
     setState(games);
   }, []);
 
-  const handleClick = (game) => {
+  const handleClickRemove = (game) => {
     STORAGE.removeFromCart(game);
+    const games = JSON.parse(localStorage.getItem('cart')) || [];
+    setState(games);
+    totalPrice();
+  };
+
+  const handleClickAdd = (game) => {
+    STORAGE.addToCart({ ...game, quantidade: 1 });
     const games = JSON.parse(localStorage.getItem('cart')) || [];
     setState(games);
     totalPrice();
@@ -41,9 +48,12 @@ function Cart() {
             <img src={game.image} alt="game" />
             <br />
             <p>Quantidade: {game.quantidade}</p>
-            <p>Preço: R$ {game.price}</p>
-            <button type="button" onClick={() => handleClick(game)}>
+            <p>Preço Unitário: R$ {game.price}</p>
+            <button type="button" onClick={() => handleClickRemove(game)}>
               Remover do carrinho
+            </button>
+            <button type="button" onClick={() => handleClickAdd(game)}>
+              Adicionar ao carrinho
             </button>
           </div>
         ))}
@@ -54,7 +64,11 @@ function Cart() {
       ) : (
         <h1 className="center">Seu carrinho está vazio!</h1>
       )}
-      {getTotal > 0 && <Link to="/cart/checkout" className="margin">Finalizar Pedido</Link>}
+      {getTotal > 0 && (
+        <Link to="/cart/checkout" className="margin">
+          Finalizar Pedido
+        </Link>
+      )}
     </main>
   );
 }
