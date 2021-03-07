@@ -32,7 +32,7 @@ function Checkout() {
   }, []);
 
   return (
-    <main>
+    <main className="main">
       <Header type="checkout" />
       <section className="checkout">
         <h1>Subtotal: R$ {getSubTotal}</h1>

@@ -17,7 +17,7 @@ function Home() {
   }, [dispatch]);
 
   return (
-    <main>
+    <main className="main">
       <Header type="home"/>
       <OrderForm />
       <ProductsList />
