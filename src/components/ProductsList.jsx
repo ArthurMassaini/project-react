@@ -1,6 +1,7 @@
 import React from 'react';
 import { useSelector } from 'react-redux';
 import * as STORAGE from '../services/storage';
+import Loading from './Loading';
 
 function ProductsList() {
   const { loading, games } = useSelector((state) => state.products);
@@ -9,7 +10,7 @@ function ProductsList() {
     STORAGE.addToCart({ ...game, quantidade: 1 });
   };
 
-  if (loading) return <div>Loading...</div>;
+  if (loading) return <Loading />;
 
   return (
     <section className="contain">
