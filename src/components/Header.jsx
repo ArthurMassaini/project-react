@@ -1,14 +1,18 @@
 import React from 'react';
+import { useSelector } from 'react-redux';
 import { Link } from 'react-router-dom';
 import cartIcon from '../assets/cart-icon.svg';
 
 function Header({ type }) {
+  const { quantity } = useSelector((state) => state.products);
+
   if (type === 'home') {
     return (
       <header className="header">
         <h1>Bem Vindo a loja de games do Arthur Massaini</h1>
         <Link to="/cart">
           <img src={cartIcon} alt="cart" />
+          <span>{quantity}</span>
         </Link>
       </header>
     );
@@ -33,6 +37,7 @@ function Header({ type }) {
         <div>
           <Link to="/cart">
             <img src={cartIcon} alt="cart" />
+            <span>{quantity}</span>
           </Link>
           <Link to="/">
             <img

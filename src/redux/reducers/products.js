@@ -3,6 +3,7 @@ import * as TYPES from '../types';
 const INITIAL_STATE = {
   loading: false,
   games: [],
+  quantity: 0,
 };
 
 const products = (state = INITIAL_STATE, action) => {
@@ -13,6 +14,8 @@ const products = (state = INITIAL_STATE, action) => {
       return { ...state, loading: false };
     case TYPES.RETRIEVE_GAMES:
       return { ...state, games: [...action.games] };
+    case TYPES.QUANTITY:
+      return { ...state, quantity: action.quantity };
     case TYPES.PRICE:
       if (action.id === 1) {
         action.games.sort((a, b) => {
@@ -47,7 +50,7 @@ const products = (state = INITIAL_STATE, action) => {
       if (action.id === 1) {
         action.games.sort((a, b) => {
           if (a.score < b.score) return 1;
-          if (a.score > b.score) return -1;  
+          if (a.score > b.score) return -1;
           return 0;
         });
       } else {
