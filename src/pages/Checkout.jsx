@@ -32,9 +32,9 @@ function Checkout() {
   }, []);
 
   return (
-    <main>
+    <main className="main">
       <Header type="checkout" />
-      <section className="checkout">
+      <section className="center">
         <h1>Subtotal: R$ {getSubTotal}</h1>
         {getSubTotal > 250.0 ? (
           <div>
@@ -44,6 +44,7 @@ function Checkout() {
         ) : (
           <h1>Frete: R$ {getFrete}</h1>
         )}
+        <hr/>
         <h1>Total: R$ {getTotal}</h1>
       </section>
     </main>

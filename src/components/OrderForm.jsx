@@ -32,8 +32,12 @@ function OrderForm() {
   };
 
   return (
-    <form className="form">
-      <select name="order" onChange={handleChange}>
+    <form className="center">
+      <select
+        name="order"
+        onChange={handleChange}
+        
+      >
         <option>ordenar por: </option>
         <option>Preço: alto a baixo</option>
         <option>Preço: baixo a alto</option>
