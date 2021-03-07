@@ -13,8 +13,12 @@ export const fetchGames = () => async (dispatch) => {
   dispatch({ type: TYPES.OK });
 };
 
-// ---------------------------------------------------- Actions de ordenação por preço
+export const cartQuantity = (quantity) => ({
+  type: TYPES.QUANTITY,
+  quantity,
+});
 
+// ---------------------------------------------------- Actions de ordenação por preço
 
 const orderByPrice = (games, id) => ({
   type: TYPES.PRICE,

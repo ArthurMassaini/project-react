@@ -4,3 +4,4 @@ export const RETRIEVE_GAMES = 'RETRIEVE_GAMES';
 export const PRICE = 'PRICE';
 export const NAME = 'NAME';
 export const RATING = 'RATING';
+export const QUANTITY = 'QUANTITY';
