@@ -1,6 +1,7 @@
 import React, { useEffect } from 'react';
 import { useSelector, useDispatch } from 'react-redux';
 import { Link } from 'react-router-dom';
+import PropTypes from 'prop-types';
 import * as ACTIONS from '../redux/actions/index';
 import cartIcon from '../assets/cart-icon.svg';
 
@@ -65,5 +66,9 @@ function Header({ type }) {
     );
   }
 }
+
+Header.propTypes = {
+  type: PropTypes.string.isRequired,
+};
 
 export default Header;
