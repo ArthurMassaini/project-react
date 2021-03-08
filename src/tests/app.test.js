@@ -84,21 +84,44 @@ describe('Requiriments:', () => {
     const addGameBtn = await waitFor(() => screen.getAllByRole('button'));
     userEvent.click(addGameBtn[0]);
 
-    const cartIcon = await waitFor(() => screen.getByAltText(/cart-icon/i));
+    const cartIcon = screen.getByAltText(/cart-icon/i);
     userEvent.click(cartIcon);
 
     const { pathname } = history.location;
     expect(pathname).toBe('/cart');
 
-    const cartGame = await waitFor(() =>
-      screen.getAllByAltText(/game-card/i),
-    );
+    const cartGame = screen.getAllByAltText(/game-card/i);
     expect(cartGame[0]).toHaveAttribute('src', 'super-mario-odyssey.png');
 
-    const removeGameBtn = await waitFor(() => screen.getAllByRole('button'));
+    const removeGameBtn = screen.getAllByRole('button');
     userEvent.click(removeGameBtn[0]);
 
     const emptyMessage = screen.getByText(/Seu carrinho está vazio!/i);
     expect(emptyMessage).toBeInTheDocument();
+  });
+
+  it('should calculate total price and shipping correctly', async () => {
+    const { history } = renderWithRouterAndStore(<App />, '/');
+
+    const addGameBtn = await waitFor(() => screen.getAllByRole('button'));
+    userEvent.click(addGameBtn[1]);
+    userEvent.click(addGameBtn[1]);
+    userEvent.click(addGameBtn[4]);
+
+    const cartIcon = screen.getByAltText(/cart-icon/i);
+    userEvent.click(cartIcon);
+
+    const checkoutBtn = screen.getByText(/Finalizar Pedido/i);
+    userEvent.click(checkoutBtn);
+
+    const { pathname } = history.location;
+    expect(pathname).toBe('/cart/checkout');
+
+    const subTotal = screen.getByText(/169.97/i);
+    const shipping = screen.getByText(/30.00/i);
+    const total = screen.getByText(/199.97/i);
+    expect(subTotal).toBeInTheDocument();
+    expect(shipping).toBeInTheDocument();
+    expect(total).toBeInTheDocument();
   });
 });
