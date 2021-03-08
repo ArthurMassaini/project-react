@@ -36,7 +36,7 @@ function Header({ type }) {
         <Link to="/">
           <img
             src="https://findicons.com/files/icons/1580/devine_icons_part_2/256/home.png"
-            alt="home"
+            alt="home-icon"
             witdth="90px"
             height="72px"
           />
@@ -49,13 +49,13 @@ function Header({ type }) {
         <h1>Bem Vindo ao checkout</h1>
         <div>
           <Link to="/cart">
-            <img src={cartIcon} alt="cart" />
+            <img src={cartIcon} alt="cart-icon" />
             <span>{quantity}</span>
           </Link>
           <Link to="/">
             <img
               src="https://findicons.com/files/icons/1580/devine_icons_part_2/256/home.png"
-              alt="home"
+              alt="home-icon"
               witdth="90px"
               height="72px"
             />

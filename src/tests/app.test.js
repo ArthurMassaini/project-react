@@ -123,5 +123,25 @@ describe('Requiriments:', () => {
     expect(subTotal).toBeInTheDocument();
     expect(shipping).toBeInTheDocument();
     expect(total).toBeInTheDocument();
+
+    const homeIcon = screen.getByAltText(/home-icon/i);
+    userEvent.click(homeIcon);
+
+    const addGameBtnAgain = await waitFor(() => screen.getAllByRole('button'));
+    userEvent.click(addGameBtnAgain[0]);
+
+    const cartIconAgain = screen.getByAltText(/cart-icon/i);
+    userEvent.click(cartIconAgain);
+
+    const checkoutBtnAgain = screen.getByText(/Finalizar Pedido/i);
+    userEvent.click(checkoutBtnAgain);
+
+    const subTotalAndTotal = screen.getAllByText(/367.85/i);
+    const shippingTwo = screen.getByText(
+      /O Frete é grátis para compras acima de 250,00 reais!/i,
+    );
+    expect(subTotalAndTotal.length).toBe(2);
+  
+    expect(shippingTwo).toBeInTheDocument();
   });
 });
