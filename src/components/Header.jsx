@@ -24,7 +24,7 @@ function Header({ type }) {
       <header className="header">
         <h1>Bem Vindo a loja de games do Arthur Massaini</h1>
         <Link to="/cart">
-          <img src={cartIcon} alt="cart" />
+          <img src={cartIcon} alt="cart-icon" />
           <span>{quantity}</span>
         </Link>
       </header>

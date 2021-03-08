@@ -46,7 +46,7 @@ function Cart() {
           <div key={game.id} className="card mb-3">
             <div className="row g-0">
               <div className="col-md-4">
-                <img src={game.image} alt="game" className="card-img-top3" />
+                <img src={game.image} alt="game-card" className="card-img-top3" />
               </div>
               <div className="col-md-8">
                 <div className="card-body">
