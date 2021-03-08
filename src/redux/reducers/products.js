@@ -17,50 +17,53 @@ const products = (state = INITIAL_STATE, action) => {
     case TYPES.QUANTITY:
       return { ...state, quantity: action.quantity };
     case TYPES.PRICE:
+      const gamesByPrice = [...action.games];
       if (action.id === 1) {
-        action.games.sort((a, b) => {
+        gamesByPrice.sort((a, b) => {
           if (a.price < b.price) return 1;
           if (a.price > b.price) return -1;
           return 0;
         });
       } else {
-        action.games.sort((a, b) => {
+        gamesByPrice.sort((a, b) => {
           if (a.price < b.price) return -1;
           if (a.price > b.price) return 1;
           return 0;
         });
       }
-      return { ...state, games: [...action.games] };
+      return { ...state, games: [...gamesByPrice] };
     case TYPES.NAME:
+      const gamesByName = [...action.games];
       if (action.id === 1) {
-        action.games.sort((a, b) => {
+        gamesByName.sort((a, b) => {
           if (a.name < b.name) return -1;
           if (a.name > b.name) return 1;
           return 0;
         });
       } else {
-        action.games.sort((a, b) => {
+        gamesByName.sort((a, b) => {
           if (a.name < b.name) return 1;
           if (a.name > b.name) return -1;
           return 0;
         });
       }
-      return { ...state, games: [...action.games] };
+      return { ...state, games: [...gamesByName] };
     case TYPES.RATING:
+      const gamesByScore = [...action.games];
       if (action.id === 1) {
-        action.games.sort((a, b) => {
+        gamesByScore.sort((a, b) => {
           if (a.score < b.score) return 1;
           if (a.score > b.score) return -1;
           return 0;
         });
       } else {
-        action.games.sort((a, b) => {
+        gamesByScore.sort((a, b) => {
           if (a.score < b.score) return -1;
           if (a.score > b.score) return 1;
           return 0;
         });
       }
-      return { ...state, games: [...action.games] };
+      return { ...state, games: [...gamesByScore] };
     default:
       return state;
   }

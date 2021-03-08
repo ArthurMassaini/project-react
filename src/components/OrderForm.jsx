@@ -36,7 +36,7 @@ function OrderForm() {
       <select
         name="order"
         onChange={handleChange}
-        
+        data-testid="order"
       >
         <option>ordenar por: </option>
         <option>Preço: alto a baixo</option>
@@ -45,6 +45,7 @@ function OrderForm() {
         <option>Nome: Z-A</option>
         <option>Nota: alto a baixo</option>
         <option>Nota: baixo a alto</option>
+        <option>Remover Filtros</option>
       </select>
     </form>
   );
