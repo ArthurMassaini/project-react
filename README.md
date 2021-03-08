@@ -9,3 +9,7 @@ No diretório raiz do projeto, rode o comando para instalar as dependências:
 No diretório raiz do projeto, rode o comando para testa-lo locamente:
 
 ### `npm start`
+
+Para testa-lo em seu navegador:
+
+_[Clique Aqui](https://project-react-ten.vercel.app/)_

@@ -14,15 +14,6 @@ function Home() {
       dispatch(ACTIONS.fetchGames());
     };
     fetchAction();
-
-    const updateQuantity = () => {
-      const games = JSON.parse(localStorage.getItem('cart')) || [];
-      const quantity = games.reduce((acc, element) => {
-        return acc + element.quantidade;
-      }, 0);
-      dispatch(ACTIONS.cartQuantity(quantity));
-    };
-    updateQuantity();
   }, [dispatch]);
 
   return (

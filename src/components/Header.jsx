@@ -1,10 +1,23 @@
-import React from 'react';
-import { useSelector } from 'react-redux';
+import React, { useEffect } from 'react';
+import { useSelector, useDispatch } from 'react-redux';
 import { Link } from 'react-router-dom';
+import * as ACTIONS from '../redux/actions/index';
 import cartIcon from '../assets/cart-icon.svg';
 
 function Header({ type }) {
   const { quantity } = useSelector((state) => state.products);
+  const dispatch = useDispatch();
+
+  useEffect(() => {
+    const updateQuantity = () => {
+      const games = JSON.parse(localStorage.getItem('cart')) || [];
+      const quantity = games.reduce((acc, element) => {
+        return acc + element.quantidade;
+      }, 0);
+      dispatch(ACTIONS.cartQuantity(quantity));
+    };
+    updateQuantity();
+  }, [dispatch]);
 
   if (type === 'home') {
     return (
