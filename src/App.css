@@ -4,16 +4,13 @@
   font-family: 'Shippori Mincho B1', serif;
 }
 
-.card-img-top {
+.card-img-top3 {
   margin-top: 15px;
   margin-bottom: 15px;
 }
 
 .card-img-top2 {
-  max-height: 200px;
-  max-width: 200px;
   margin-top: 15px;
-  margin-bottom: 15px;
 }
 
 .contain {

@@ -1,6 +1,7 @@
 import React, { useEffect } from 'react';
 import { useSelector, useDispatch } from 'react-redux';
 import { Link } from 'react-router-dom';
+import PropTypes from 'prop-types';
 import * as ACTIONS from '../redux/actions/index';
 import cartIcon from '../assets/cart-icon.svg';
 
@@ -24,7 +25,7 @@ function Header({ type }) {
       <header className="header">
         <h1>Bem Vindo a loja de games do Arthur Massaini</h1>
         <Link to="/cart">
-          <img src={cartIcon} alt="cart" />
+          <img src={cartIcon} alt="cart-icon" />
           <span>{quantity}</span>
         </Link>
       </header>
@@ -36,7 +37,7 @@ function Header({ type }) {
         <Link to="/">
           <img
             src="https://findicons.com/files/icons/1580/devine_icons_part_2/256/home.png"
-            alt="home"
+            alt="home-icon"
             witdth="90px"
             height="72px"
           />
@@ -49,13 +50,13 @@ function Header({ type }) {
         <h1>Bem Vindo ao checkout</h1>
         <div>
           <Link to="/cart">
-            <img src={cartIcon} alt="cart" />
+            <img src={cartIcon} alt="cart-icon" />
             <span>{quantity}</span>
           </Link>
           <Link to="/">
             <img
               src="https://findicons.com/files/icons/1580/devine_icons_part_2/256/home.png"
-              alt="home"
+              alt="home-icon"
               witdth="90px"
               height="72px"
             />
@@ -65,5 +66,9 @@ function Header({ type }) {
     );
   }
 }
+
+Header.propTypes = {
+  type: PropTypes.string.isRequired,
+};
 
 export default Header;

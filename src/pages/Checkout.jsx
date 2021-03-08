@@ -3,7 +3,6 @@ import { useEffect, useState } from 'react';
 import Header from '../components/Header';
 
 function Checkout() {
-  // const [getState, setState] = useState();
   const [getSubTotal, setSubTotal] = useState();
   const [getFrete, setFrete] = useState();
   const [getTotal, setTotal] = useState();

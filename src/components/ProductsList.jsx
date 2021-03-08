@@ -29,11 +29,15 @@ function ProductsList() {
       <div className="row row-cols-1 row-cols-md-3 g-4">
         {games.map((game) => (
           <div key={game.id} className="card mb-3">
-            <div className="row g-0">
-              <div className="col-md-4">
-                <img src={game.image} alt="game" className="card-img-top2" />
+            <div className="col g-0">
+              <div className="row-md-4">
+                <img
+                  src={game.image}
+                  alt="game-card"
+                  className="card-img-top2"
+                />
               </div>
-              <div className="col-md-8">
+              <div className="row-md-8">
                 <div className="card-body">
                   <h4 className="card-title">{game.name}</h4>
                   <div className="card-text">
